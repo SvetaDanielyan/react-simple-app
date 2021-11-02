@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Numbers.css";
 
 const IncreaseingNumbers = () => {
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(
+    parseInt(localStorage.getItem("number"))
+  );
+
+  useEffect(() => {
+    localStorage.setItem("number", number);
+  }, [number]);
 
   const IncreaseNumber = () => {
     setNumber(number + GenerateRandomNumber());
@@ -11,7 +17,7 @@ const IncreaseingNumbers = () => {
   const GenerateRandomNumber = () => {
     const min = 2;
     const max = 10;
-    return Math.floor(Math.random() * (max - min) + min)
+    return Math.floor(Math.random() * (max - min) + min);
   };
 
   const Reset = () => {
