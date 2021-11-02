@@ -1,38 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "./Numbers.css";
+import helper from "./Helper";
 
-const IncreaseingNumbers = () => {
+const Numbers = () => {
   const [number, setNumber] = useState(
-    parseInt(localStorage.getItem("number"))
+    parseInt(localStorage.getItem("number")) | 0
   );
 
   useEffect(() => {
     localStorage.setItem("number", number);
   }, [number]);
 
-  const IncreaseNumber = () => {
-    setNumber(number + GenerateRandomNumber());
+  const increaseNumber = () => {
+    setNumber(number + helper.generateRandomNumber());
   };
 
-  const GenerateRandomNumber = () => {
-    const min = 2;
-    const max = 10;
-    return Math.floor(Math.random() * (max - min) + min);
-  };
-
-  const Reset = () => {
+  const reset = () => {
     setNumber(0);
   };
 
   return (
     <div>
       <div className="Buttons">
-        <button onClick={IncreaseNumber}>Increase number</button>
-        <button onClick={Reset}>Reset to 0</button>
+        <button onClick={increaseNumber}>Increase number</button>
+        <button onClick={reset}>Reset to 0</button>
       </div>
       <p>{number}</p>
     </div>
   );
 };
 
-export default IncreaseingNumbers;
+export default Numbers;
