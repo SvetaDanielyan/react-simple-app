@@ -1,7 +1,6 @@
 const helper = {
-    generateRandomNumber: function () {
-    const min = 2;
-    const max = 10;
+    generateRandomNumber: function (min, max) {
+    
     return Math.floor(Math.random() * (max - min) + min);
   },
 };

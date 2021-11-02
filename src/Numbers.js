@@ -3,6 +3,9 @@ import "./Numbers.css";
 import helper from "./Helper";
 
 const Numbers = () => {
+  const min = 2;
+  const max = 10;
+
   const [number, setNumber] = useState(
     parseInt(localStorage.getItem("number")) | 0
   );
@@ -12,7 +15,7 @@ const Numbers = () => {
   }, [number]);
 
   const increaseNumber = () => {
-    setNumber(number + helper.generateRandomNumber());
+    setNumber(number + helper.generateRandomNumber(min, max));
   };
 
   const reset = () => {
@@ -21,7 +24,7 @@ const Numbers = () => {
 
   return (
     <div>
-      <div className="Buttons">
+      <div className="buttons">
         <button onClick={increaseNumber}>Increase number</button>
         <button onClick={reset}>Reset to 0</button>
       </div>
