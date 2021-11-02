@@ -5,7 +5,13 @@ const IncreaseingNumbers = () => {
   const [number, setNumber] = useState(0);
 
   const IncreaseNumber = () => {
-    setNumber(number + 1);
+    setNumber(number + GenerateRandomNumber());
+  };
+
+  const GenerateRandomNumber = () => {
+    const min = 2;
+    const max = 10;
+    return Math.floor(Math.random() * (max - min) + min)
   };
 
   const Reset = () => {
